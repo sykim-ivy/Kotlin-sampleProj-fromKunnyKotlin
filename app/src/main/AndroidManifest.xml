@@ -9,12 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".ui.signin.SignInActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- 사용자 인증 완료 시 콜백 주소로 전달되는 정보를 받을 수 있도록 추가
+                    ACTION_VIEW : 이 작업은 액티비티가 사용자에게 표시할 수 있는 어떤 정보를 가지고 있을 때 startActivity()가 있는 인텐트에서 사용합니다. 예를 들어 갤러리 앱에서 볼 사진이나 지도 앱에서 볼 주소 등이 이에 해당됩니다.
+                    CATEGORY_DEFAULT : 가장 기본이 되는 액티비티 (암시적 인텐트를 수신하려면 CATEGORY_DEFAULT 카테고리를 인텐트 필터에 포함해야 합니다)
+                    CATEGORY_BROWSABLE : 대상 액티비티가 웹브라우저를 통해 시작되도록 허용하고 이미지, 이메일 메시지 등의 링크로 참조된 데이터를 표시하게 합니다.
+                    <data> : 허용된 데이터 유형을 선언합니다.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:host="authorize"
+                    android:scheme="simplegithub"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.MainActivity">
         </activity>
     </application>
 

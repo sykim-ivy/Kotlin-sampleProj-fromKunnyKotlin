@@ -1,7 +1,9 @@
-package com.androidhuman.example.simplegithub;
+package com.androidhuman.example.simplegithub.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.androidhuman.example.simplegithub.R;
 
 public class MainActivity extends AppCompatActivity {
 
