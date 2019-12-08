@@ -1,15 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
     defaultConfig {
         applicationId "com.androidhuman.example.simplegithub"
-        minSdkVersion 23
-        targetSdkVersion 28
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // 'app/gradle.properties'에 정의된 값을 BuildConfig 내 필등로 변환해줌
+        // 프로퍼티가 정의되어 있지 않다면, "NOT_FOUND" 값이 BuildConfig 내 필드에 대입됨
+        buildConfigField "String", "GITHUB_CLIENT_ID",
+            project.properties["GITHUB_CLIENT_ID"] ?: "\"NOT_FOUND\""
+
+        buildConfigField "String", "GITHUB_CLIENT_SECRET",
+                project.properties["GITHUB_CLIENT_SECRET"] ?: "\"NOT_FOUND\""
+
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,7 +31,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
