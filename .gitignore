@@ -134,7 +134,4 @@ fabric.properties
 
 !/gradle/wrapper/gradle-wrapper.jar
 
-## Hide client ID, KEY for Git API Projet
-.gradle.properties
-
 # End of https://www.gitignore.io/api/androidstudio

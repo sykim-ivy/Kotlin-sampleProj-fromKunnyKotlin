@@ -1,1 +1,4 @@
 /build
+
+## Hide client ID, KEY for Git API Projet
+.gradle.properties
